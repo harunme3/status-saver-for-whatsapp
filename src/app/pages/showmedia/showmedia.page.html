@@ -1,0 +1,63 @@
+<ion-header color="light" >
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="closeModal()">
+        <img src="assets/icon/left-arrow.png" alt="">
+      </ion-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+
+  <div *ngIf="videoplay" class="flex-content"    >
+    <video id="photo-fullscreen" playsinline preload="auto"  autoplay controls  >
+      <source [src]="getimagesrc(url)" type="video/mp4" />
+    </video>
+  </div>
+
+
+<ion-slides  [options]='zoomoption'  class="swiper-wrapper"  >
+  <ion-slide>
+    <div *ngIf="imageopen" class="flex-content"   class="swiper-zoom-container"    >
+      <img  id="photo-fullscreen" [src]="getimagesrc(url)"alt="">
+     </div>
+
+  </ion-slide>
+</ion-slides>
+
+
+
+
+</ion-content  >
+
+
+
+<ion-footer  >
+  <div class="flex-container">
+    <div   (click)="repost(url)">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+      <br>
+      <label>Repost</label>
+    </div>
+    <div *ngIf="status"   (click)="download()">
+      <ion-icon name="arrow-down-circle-outline"></ion-icon>
+      <br>
+      <label>Download</label>
+    </div>
+    <div *ngIf="saved"   (click)="deletesaved()">
+      <ion-icon name="trash-outline"></ion-icon>
+      <br>
+      <label>Delete</label>
+    </div>
+    <div (click)="shareviaoption()">
+      <ion-icon name="share-social"></ion-icon>
+
+      <br>
+      <label>Share</label>
+    </div>
+  </div>
+</ion-footer>

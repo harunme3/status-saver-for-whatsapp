@@ -1,0 +1,48 @@
+<ion-content class="ion-padding" class="container">
+  <ion-slides pager="true"   (ionSlideDidChange)="permissionbyslide()" >
+
+    <ion-slide class="ion-padding">
+
+      <img src="../../assets/image/1.png" />
+
+      <div class="slider-text">
+        <h2>Welcome</h2>
+        <p>Download Your WhatsApp <br />Status offline</p>
+      </div>
+       <div class="btn"> <ion-button color="secondary"  (click)="next()"
+               >NEXT</ion-button></div>
+
+    </ion-slide>
+
+
+
+    <ion-slide class="ion-padding"  >
+      <img src="../../assets/image/2.png" />
+
+      <div class="slider-text">
+        <h2>Permission</h2>
+
+        <p>
+          you have to allow for access<br />
+          media file
+        </p>
+      </div>
+<div class="btn"> <ion-button color="secondary" (click)="next()">PERMISSION</ion-button> </div>
+
+    </ion-slide>
+    <ion-slide class="ion-padding">
+      <img src="../../assets/image/4.png" />
+
+      <div class="slider-text">
+        <h2>Send Photos and Videos</h2>
+
+        <p>
+          Now to connect with your<br />
+          Friend's and Family
+        </p>
+      </div>
+<div class="btn"> <ion-button color="secondary"  (click)="getStarted()">GET STARTED</ion-button></div>
+
+    </ion-slide>
+  </ion-slides>
+</ion-content>

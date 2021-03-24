@@ -1,0 +1,31 @@
+.grid
+{
+    display: grid;
+    height: 100%;
+    grid-template-columns: auto auto;
+    align-content: center;
+    justify-content: center;
+    grid-row-gap: 100px;
+    grid-column-gap: 50px;
+
+}
+.griditem
+{
+background-color: var(--ion-color-tertiary);
+padding: 30px;
+
+position: relative;
+}
+
+.griditem label{
+    position:absolute;
+    left: 25%;
+    bottom: 5%;
+
+
+
+}
+
+
+
+

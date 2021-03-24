@@ -1,0 +1,91 @@
+ion-title
+{
+  font-size: 20px;
+}
+
+
+.whatsAPP-chat {
+  background-image: url(../../assets/image/chatb.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: fixed;
+  height: 100%;
+}
+
+.code-number {
+  position: absolute;
+  display: flex;
+  top: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.code-number > div {
+
+  border-radius: 30px;
+  padding: 5px;
+  margin: 5px;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 22px;
+  box-shadow: -2px -3px 5px rgba(66,66,66,.50);
+  text-shadow: -50px 0px 0px rgba(66,66,66,.75);
+}
+
+.code {
+  flex: 1;
+
+}
+
+.number {
+  flex: 3;
+
+}
+
+
+
+
+
+.text-icon {
+  position: absolute;
+  display: flex;
+  width: 100%;
+
+  align-items: center;
+  justify-content: center;
+  bottom: 10px;
+}
+.text-icon > div {
+
+  border-radius: 30px;
+  margin: 5px;
+  padding: 5px;
+
+}
+.text {
+  flex: 7;
+  font-size: 16px;
+  border-width: 1px;
+  border-color: #CCCCCC;
+  background-color: #FFFFFF;
+  color: #000000;
+  border-style: solid;
+  border-radius: 22px;
+  box-shadow: -2px -3px 5px rgba(66,66,66,.50);
+  text-shadow: -50px 0px 0px rgba(66,66,66,.75);
+
+}
+
+.icon {
+  flex: 1;
+  background-color: #FFFFFF;
+  border-radius: 22px;
+  justify-self: end;
+
+}
+

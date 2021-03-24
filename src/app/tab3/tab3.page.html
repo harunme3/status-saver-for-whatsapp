@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Chat Without<br />
+      Saving Number</ion-title>
+    <ion-icon (click)="setting()" class="ion-padding" slot="end" size="large" name="cog-outline"></ion-icon>
+    <ion-icon (click)="toggletheme($event)"  class="ion-padding"  slot="end" size="large"
+    [name]="visible ? 'sunny-outline' :'moon-outline'"  [color]="visible ? 'danger' :'success'"   ></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+
+<ion-content color="light" >
+  <div class="whatsAPP-chat">
+
+
+
+    <form class="form-group"  (ngSubmit)="onsubmit(userform)"      #userform="ngForm"    >
+
+      <div class="code-number">
+        <div class="code">
+          <ion-input name="code" minlength=2 maxlength=3 type="tel" placeholder="code" [(ngModel)]="values">+</ion-input>
+        </div>
+        <div class="number">
+          <ion-input name="number" maxlength=15 type="tel" placeholder="Enter Mobile number" ngModel></ion-input>
+        </div>
+      </div>
+
+      <div class="text-icon">
+        <div class="text">
+          <ion-input name="msg"  type="text" placeholder="Enetr message" ngModel></ion-input>
+        </div>
+        <div class="icon" >
+          <ion-button type="submit" color="none" >
+            <ion-icon color="primary" size="large" name="send-sharp"></ion-icon>
+          </ion-button>
+
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+
+
+
+
+</ion-content>

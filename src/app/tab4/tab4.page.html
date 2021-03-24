@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>WA Status</ion-title>
+    <ion-icon (click)=" callonresume_dual() " class="ion-padding" slot="end" size="large" name="reload-outline">
+    </ion-icon>
+    <ion-icon (click)="launchaApp()"  class="ion-padding"  slot="end" size="large" name="chatbubble-ellipses-outline"  ></ion-icon>
+    <ion-icon (click)="shareApp()" class="ion-padding" slot="end" size="large"  name="navigate-circle-outline"></ion-icon>
+    <ion-icon  (click)="presentAlertRadio()" slot="end"  size="large" name="ellipsis-vertical-outline" ></ion-icon>
+  </ion-toolbar>
+  <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment">
+    <ion-segment-button value="0">
+      Photos
+    </ion-segment-button>
+    <ion-segment-button value="1">
+      Videos
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+
+<ion-content color="light">
+  <!--tool-->
+  <div class="container tool"  *ngIf="checkbox">
+    <div class="item"   (click)="downloadtool()" >
+      <ion-icon name="arrow-down-circle-outline"></ion-icon>
+      <ion-label>Download</ion-label>
+    </div>
+    <div class="item"  (click)="reposttool()">
+      <ion-icon name="logo-whatsapp"></ion-icon>
+      <ion-label>Repost</ion-label>
+    </div>
+    <div class="item"  (click)="sharetool()">
+      <ion-icon name="share-social-outline"></ion-icon>
+      <ion-label>Share</ion-label>
+    </div>
+  </div>
+
+
+  <ion-slides #slides (ionSlideDidChange)="slideChanged(slides)" [options]="slideConfig">
+    <ion-slide>
+      <div class="images">
+        <div (press)="tapEvent()" class="image" *ngFor="let image of Photosdual; index as i; trackBy: trackbydownview">
+          <ion-checkbox class="media-selector" style="position: absolute" *ngIf="checkbox"
+            (ionChange)="markForDownload($event,image,i)"></ion-checkbox>
+          <img [src]="image.imagescr" (click)="show(image.downview, i, image.imagescr)" />
+        </div>
+      </div>
+
+    </ion-slide>
+    <ion-slide>
+
+      <div class="images">
+        <div (press)="tapEvent()" class="image" *ngFor="let video of Videosdual; index as i;trackBy:trackbydownviewv">
+          <ion-checkbox class="media-selector" style="position:absolute" *ngIf="checkbox"
+            (ionChange)="markForDownload($event,video,i)"></ion-checkbox>
+          <img [src]=video.videoscr (click)="show(video.downview,i,video.videoscr)" />
+        </div>
+      </div>
+
+    </ion-slide>
+  </ion-slides>
+
+
+  <ng-lottie *ngIf="lottiecard" [options]="options" ></ng-lottie>
+  <div class="close-app" *ngIf="lottiecard">
+    <ion-card color="success">
+     <ion-card-header>
+       <ion-card-title>Look like you have not installed {{appname}}</ion-card-title>
+     </ion-card-header>
+    <ion-button (click)="closeselection()" expand="block"  color="secondary"  color="secondary">
+        close {{appname}}
+    </ion-button>
+  </ion-card>
+  </div>
+
+
+
+</ion-content>
