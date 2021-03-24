@@ -140,10 +140,7 @@ export class Tab2Page {
       this.toolactionService.delete(this.selectedMedia[i].urld, this.indices);
 
     }
-
-
-
-   // this.tapEvent();
+ this.tapEvent();
   }
 
   reposttool() {
