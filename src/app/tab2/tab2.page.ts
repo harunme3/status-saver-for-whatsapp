@@ -103,13 +103,16 @@ export class Tab2Page {
   indices = [];
   async markForDownload(event, data, index) {
     var extension = data.downview.split('.').pop();
-
+    console.log(data)
     if (event.detail.checked) {
       if (extension == 'mp4') {
         this.selectedMedia.push({ urld: data.downview, urls: data.videoscr });
       } else {
         this.selectedMedia.push({ urld: data.downview, urls: data.imagescr });
       }
+
+
+
 
       this.indices.push(index);
     }
@@ -118,7 +121,7 @@ export class Tab2Page {
       const pointer = this.selectedMedia.findIndex(
         (x) => x.urld === data.downview
       );
-      console.log(pointer);
+
       const pointerindex = this.indices.indexOf(index, 0);
       this.selectedMedia.splice(pointer, 1);
       this.indices.splice(pointerindex, 1);
@@ -132,12 +135,15 @@ export class Tab2Page {
   // action tool
 
   deletetool() {
-    let deletearray = [];
+
     for (let i = 0; i < this.selectedMedia.length; i++) {
-      deletearray.push(this.selectedMedia[i].urld);
+      this.toolactionService.delete(this.selectedMedia[i].urld, this.indices);
+
     }
-    this.toolactionService.delete(deletearray, this.indices);
-    this.tapEvent();
+
+
+
+   // this.tapEvent();
   }
 
   reposttool() {

@@ -41,36 +41,37 @@ export class ToolactionService {
 
 
 
- async delete(selectedMedia,indices)
+ async delete(deletearray,indices)
  {
 
-  for(let i=0;i<selectedMedia.length;i++)
-  {
-    const path=selectedMedia[i].substring(0,selectedMedia[i].lastIndexOf('/')+1);
-    const filename=selectedMedia[i].substring(selectedMedia[i].lastIndexOf('/')+1)
+    const path=deletearray.substring(0,deletearray.lastIndexOf('/')+1);
+    const filename=deletearray.substring(deletearray.lastIndexOf('/')+1)
 
-    let extension =selectedMedia[i].split(".").pop();
+    let extension =deletearray.split(".").pop();
 
 
     if(extension=='mp4')
-    this.downloadService.savedvideo.splice(indices[i],1);
+    this.downloadService.savedvideo.splice(indices,1);
     else
-    this.downloadService.savedphoto.splice(indices[i],1);
+    this.downloadService.savedphoto.splice(indices,1);
 
-    this.file.removeFile(path,filename).then(async ()=>{
-      const toast = await this.toastController.create({
-        message: 'Your status have been deleted',
-        duration: 500,
-        position:'middle',
-        color:"success",
-        mode:'ios',
-      });
-      toast.present();
-
-    })
+    this.file.removeFile(path,filename).then((e)=>{
+       console.log(e)
+    });
 
 
-  }
+
+
+
+    const toast = await this.toastController.create({
+      message: 'Your status have been deleted',
+      duration: 500,
+      position:'middle',
+      color:"success",
+      mode:'ios',
+    });
+    toast.present();
+
 
 
  }
