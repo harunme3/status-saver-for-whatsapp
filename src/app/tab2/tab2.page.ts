@@ -23,7 +23,7 @@ export class Tab2Page {
     private modalController: ModalController,
     private toolactionService: ToolactionService
   ) {
-    this.platform.ready().then(() => {});
+
   }
 
   Photos: any[] = [];
@@ -71,12 +71,12 @@ export class Tab2Page {
   segment = 0;
   async segmentChanged() {
     await this.slider.slideTo(this.segment);
-    console.log('segmentchange');
+
   }
 
   async slideChanged(e) {
     this.segment = await e.getActiveIndex();
-    console.log('slidechange');
+
   }
 
   slideConfig = {
@@ -103,7 +103,7 @@ export class Tab2Page {
   indices = [];
   async markForDownload(event, data, index) {
     var extension = data.downview.split('.').pop();
-    console.log(data)
+
     if (event.detail.checked) {
       if (extension == 'mp4') {
         this.selectedMedia.push({ urld: data.downview, urls: data.videoscr });

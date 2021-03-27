@@ -7,19 +7,20 @@ import {
   AppLauncherOptions,
 } from '@ionic-native/app-launcher/ngx';
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class DownloadService {
   constructor(
     public file: File,
-
     private videoEditor: VideoEditor,
     private socialSharing: SocialSharing,
-
     private appLauncher: AppLauncher
   ) {}
 
+
+// WhatsApp status
   statusphoto: any[] = [];
   statustempvideos: any[] = [];
   statusvideo: any[] = [];
@@ -57,7 +58,7 @@ export class DownloadService {
       .catch((err) => console.log(err));
   }
 
-  //end day
+
 
   createThumb(video, i) {
     let len = video.length;
@@ -98,6 +99,25 @@ export class DownloadService {
     }
   }
 
+
+
+//tonight work
+
+
+
+
+
+
+
+
+
+
+
+
+//whatsApp saved
+
+
+
   savedphoto: any[] = [];
   savedtempvideo: any[] = [];
   savedvideo: any[] = [];
@@ -133,6 +153,9 @@ export class DownloadService {
       })
       .catch((err) => console.log(err));
   }
+
+
+
 
   createThumbsaved(video, i) {
     let len = video.length;
@@ -176,115 +199,85 @@ export class DownloadService {
 
 
 
-//todays work first finish this
-
-
-download(urld, urls) {
-
-      let url = urld.substring(urld.lastIndexOf('/') + 1);
-      let extension = urld.split('.').pop();
-      const root = this.file.externalRootDirectory;
-      let dirctorypath = urld.substring(0, urld.lastIndexOf('/') + 1);
-
-      this.file.resolveDirectoryUrl(root + 'WStatusSaver').then((d) => {
-        this.file
-          .getFile(d, url, { create: false, exclusive: true })
-          .then(() => {
-            console.log('exist');
-          })
-          .catch(() => {
-            if (extension == 'mp4') {
-              this.savedvideo.push({
-                downview: urld,
-                videoscr: urls,
-              });
-            } else {
-              this.savedphoto.push({
-                imagescr: this.getimagesrc(urld),
-                downview: urld,
-              });
-            }
-          });
-      });
 
 
 
-    this.file.copyFile(dirctorypath, url, this.file.externalRootDirectory + "WStatusSaver", '')
-        .then((t) => {
-          console.log('saved');
+
+
+
+  download(urld, urls) {
+    let url = urld.substring(urld.lastIndexOf('/') + 1);
+    let extension = urld.split('.').pop();
+    const root = this.file.externalRootDirectory;
+    let dirctorypath = urld.substring(0, urld.lastIndexOf('/') + 1);
+
+    this.file.resolveDirectoryUrl(root + 'WStatusSaver').then((d) => {
+      this.file
+        .getFile(d, url, { create: false, exclusive: true })
+        .then(() => {
+          console.log('exist');
         })
-        .catch((err) => {
-          console.log(err);
+        .catch(() => {
+          if (extension == 'mp4') {
+            this.savedvideo.push({
+              downview: urld,
+              videoscr: urls,
+            });
+          } else {
+            this.savedphoto.push({
+              imagescr: this.getimagesrc(urld),
+              downview: urld,
+            });
+          }
         });
+    });
 
-
-}
-
-
-
-
-
-//end todays work
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///today
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    this.file
+      .copyFile(
+        dirctorypath,
+        url,
+        this.file.externalRootDirectory + 'WStatusSaver',
+        ''
+      )
+      .then((t) => {
+        console.log('saved');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   public win: any = window;
 
   getimagesrc(urls) {
     let path = this.win.Ionic.WebView.convertFileSrc(urls);
-    return path;  }
+    return path;
+  }
 
   share_with_all_option() {
-    var optionshare = {
-      message: 'it is best app for indian Railway inquiry ',
-      url:
-        'https://play.google.com/store/apps/details?id=com.trv.statussaverforwhatsapp',
-    };
-    this.socialSharing.shareWithOptions(optionshare);
+    this.file
+      .copyFile(
+        this.file.applicationDirectory + 'www/assets/image/',
+        'sharewithlink.jpg',
+        this.file.externalRootDirectory,
+        ''
+      )
+      .then((image)=>{
+
+        var optionshare = {
+          message: 'Download photos and videos from whatsApp status offline',
+          url:
+            'https://play.google.com/store/apps/details?id=com.trv.statussaverforwhatsapp',
+          files: [image.nativeURL],
+        };
+        this.socialSharing.shareWithOptions(optionshare);
+      }).catch((e)=>{
+        console.log(e)
+      })
+
+
+
+
   }
 
   launchApp(pkg: any) {
@@ -311,27 +304,11 @@ download(urld, urls) {
     );
   }
 
+  //set and reset modal status
+  statusofmodal: string = '';
 
+  togalemodalstatus(status) {
+    this.statusofmodal = status;
 
-
-//set and reset modal status
-statusofmodal:string="";
-
-togalemodalstatus(status)
-{
-
-  this.statusofmodal=status;
-  console.log(this.statusofmodal)
-
-}
-
-
-
-
-
-
-
-
-
-
+  }
 }

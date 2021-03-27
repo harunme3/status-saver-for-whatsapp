@@ -36,33 +36,21 @@ export class Tab1Page {
     private toolactionService:ToolactionService
   ) {
 
-    this.platform.ready().then(()=>{
-      setTimeout(() => {
-        this. callonresume_main();
-      }, 1000);
-    })
 
   }
 
-
-
-ngAfterViewInit() {
-  this.platform.ready().then(()=>{
-    this.downloadService.getMedia();
-    this.Photos = this.downloadService.statusphoto;
-    this.Videos =  this.downloadService.statusvideo;
-
-  })
+ngAfterViewInit(): void {
+ this.platform.ready().then(()=>{
+  setTimeout(()=>{
+    this.callonresume_main();
+  },500)
+ })
 
 }
 
 
 
-
-
-
-
-    callonresume_main() {
+  callonresume_main() {
     this.platform.ready().then(() => {
           this.downloadService.getMedia();
           this.Photos = this.downloadService.statusphoto;
@@ -70,6 +58,12 @@ ngAfterViewInit() {
 
         });
       }
+
+
+
+
+
+
 
 
 
@@ -231,13 +225,13 @@ ngAfterViewInit() {
   segment = 0;
   async segmentChanged() {
     await this.slider.slideTo(this.segment);
-    console.log("segmentchange")
+
   }
 
   async slideChanged(e) {
 
     this.segment = await e.getActiveIndex();
-    console.log("slidechange")
+
 
   }
 
@@ -299,8 +293,7 @@ ngAfterViewInit() {
     }
 
     if(!event.detail.checked) {
-     const pointer = this.selectedMedia.findIndex(x => x.urld ===data.downview)
-     console.log(pointer)
+     const pointer = this.selectedMedia.findIndex(x => x.urld ===data.downview);
      const pointerindex = this.indices.indexOf(index, 0);
     this.selectedMedia.splice(pointer,1);
     this.indices.splice(pointerindex,1);
@@ -376,6 +369,7 @@ ionViewWillLeave()
 {
 this.checkbox=false;
 }
+
 
 
 

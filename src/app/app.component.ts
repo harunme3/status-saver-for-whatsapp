@@ -51,7 +51,7 @@ export class AppComponent {
 
    async switchtheme() {
     await this.nativeStorage.getItem('themekey').then((key) => {
-       console.log(key)
+
        document.body.setAttribute('color-theme', 'dark');
      }).catch(()=>{
        console.log("switch theme is not set")

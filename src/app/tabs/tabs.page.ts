@@ -5,6 +5,7 @@ import { Platform } from '@ionic/angular';
 import { DownloadService } from './../service/download.service';
 import { Component, Input } from '@angular/core';
 
+
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -27,7 +28,7 @@ export class TabsPage {
     this.nativeStorage.getItem('dual').then((key)=>{
       this.multipleWhatsApp=key;
   }).catch((err)=>{
-    console.log("Not found")
+    console.log(err)
   });
 }
 
@@ -41,7 +42,13 @@ this.platform.ready().then(()=>{
 
 
   this.platform.resume.subscribe(() => {
-    this.tab1Page.callonresume_main();
+
+     setTimeout(() => {
+      this.tab1Page.callonresume_main();
+     }, 500);
+
+
+
 
 
 
@@ -50,7 +57,7 @@ this.platform.ready().then(()=>{
     this.tab4Page.callonresume_dual();
 
     }).catch((err)=>{
-      console.log("Not found")
+      console.log(err)
     })
 
 

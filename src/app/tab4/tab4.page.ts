@@ -42,6 +42,7 @@ appname:string="";
 
   ) {
 
+    console.log("hello")
 this.platform.ready().then(()=>{
   setTimeout(() => {
     this.showlottie();
@@ -61,7 +62,7 @@ ngAfterViewInit()
     this.nativeStorage.getItem('dual').then((key)=>{
       if(key=="WhatsApp dual")
       {
-     console.log("whatsApp dual")
+
      this.downloaddualService.getMedia("file:///storage/emulated/999/","WhatsApp/Media", "WhatsApp/Media/.Statuses");
      this.Photosdual = this.downloaddualService.statusphoto;
      this.Videosdual=this.downloaddualService.statusvideo;
@@ -69,7 +70,7 @@ ngAfterViewInit()
       }
       else if(key=="Business dual")
       {
-  console.log("Business dual")
+
   this.downloaddualService.getMedia("file:///storage/emulated/999/","WhatsApp Business/Media", "WhatsApp Business/Media/.Statuses");
   this.Photosdual =this.downloaddualService.statusphoto;
   this.Videosdual= this.downloaddualService.statusvideo;
@@ -78,7 +79,7 @@ ngAfterViewInit()
       }
       else
       {
-        console.log("Business")
+
       this.downloaddualService.getMedia("file:///storage/emulated/0/","WhatsApp Business/Media", "WhatsApp Business/Media/.Statuses");
       this.Photosdual = this.downloaddualService.statusphoto;
       this.Videosdual=this.downloaddualService.statusvideo;
@@ -88,7 +89,7 @@ ngAfterViewInit()
 
 
       }).catch((err)=>{
-        console.log("Not found")
+        console.log(err)
       })
 
 
@@ -105,7 +106,7 @@ ngAfterViewInit()
 
 showlottie()
 {
-   console.log(this.Photosdual)
+
   if( !(this.Photosdual.length||this.Videosdual.length))
   {
       this.lottiecard=true;
@@ -128,7 +129,7 @@ callonresume_dual()
       }
       else if(key=="Business dual")
       {
-  console.log("Business dual")
+
 
   this.downloaddualService.getMedia("file:///storage/emulated/999/","WhatsApp Business/Media", "WhatsApp Business/Media/.Statuses");
   this.Photosdual = this.downloaddualService.statusphoto;
@@ -145,7 +146,7 @@ callonresume_dual()
 
 
       }).catch((err)=>{
-        console.log("Not found")
+        console.log(err)
       })
 
 
@@ -178,12 +179,28 @@ return await modal.present();
 
   shareApp()
   {
+    this.file
+    .copyFile(
+      this.file.applicationDirectory + 'www/assets/image/',
+      'sharewithlink.jpg',
+      this.file.externalRootDirectory,
+      ''
+    )
+    .then((image)=>{
 
-    this.socialSharing.shareViaWhatsApp('kishi ka bhi status download karo ', '','https://play.google.com/store/apps/details?id=com.trv.statussaverforwhatsapp').then(() => {
-      // Success!
-    }).catch(() => {
-      // Error!
-    });
+      this.socialSharing.shareViaWhatsApp('Download photos and videos from whatsApp status offline ', image.nativeURL,'https://play.google.com/store/apps/details?id=com.trv.statussaverforwhatsapp').then(() => {
+        // Success!
+      }).catch(() => {
+        // Error!
+      });
+    }).catch((e)=>{
+      console.log(e)
+    })
+
+
+
+
+
   }
 
 
@@ -333,13 +350,13 @@ async presentAlert() {
 segment = 0;
 async segmentChanged() {
   await this.slider.slideTo(this.segment);
-  console.log("segmentchange")
+
 }
 
 async slideChanged(e) {
 
   this.segment = await e.getActiveIndex();
-  console.log("slidechange")
+
 
 }
 
@@ -395,7 +412,7 @@ trackbydownviewv(index:number,Videos:any)
 
      if(!event.detail.checked) {
       const pointer = this.selectedMedia.findIndex(x => x.urld ===data.downview)
-      console.log(pointer)
+
       const pointerindex = this.indices.indexOf(index, 0);
      this.selectedMedia.splice(pointer,1);
      this.indices.splice(pointerindex,1);

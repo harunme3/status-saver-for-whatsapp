@@ -31,7 +31,7 @@ export class WelcomePage implements OnInit {
     this.router.navigate(['/tabs']);
 
     this.file.createDir(this.file.externalRootDirectory,'WStatusSaver',false).then(()=>{
-      console.log("created");
+
     }).catch(()=>{
       console.log("already exist");
     })
@@ -50,7 +50,7 @@ next()
   {
       this.slides.getActiveIndex().then((index)=>{
 
-        console.log(index)
+
         if(index==2)
         {
           let list: string[] = [
@@ -65,7 +65,7 @@ next()
             .then((res) => {
               console.log("permission garnteed")
                if(!res.hasPermission)
-               { console.log("no permission")
+               {
                 this.androidPermissions.requestPermissions(list);
 
                }//

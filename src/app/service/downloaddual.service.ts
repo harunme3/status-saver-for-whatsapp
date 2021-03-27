@@ -100,7 +100,7 @@ export class DownloaddualService {
 
   share_with_all_option() {
     var optionshare = {
-      message: 'it is best app for indian Railway inquiry ',
+      message: 'Download photos and videos from whatsApp status offline',
       url:
         'https://play.google.com/store/apps/details?id=com.trv.statussaverforwhatsapp',
     };
