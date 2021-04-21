@@ -51,31 +51,7 @@ next()
       this.slides.getActiveIndex().then((index)=>{
 
 
-        if(index==2)
-        {
-          let list: string[] = [
-            this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE,
-            this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE,
-          ];
 
-          this.androidPermissions
-            .checkPermission(
-              this.androidPermissions.PERMISSION.READ_EXTERNAL_STORAGE
-            )
-            .then((res) => {
-              console.log("permission garnteed")
-               if(!res.hasPermission)
-               {
-                this.androidPermissions.requestPermissions(list);
-
-               }//
-
-            },err=>{
-              console.log("no permission error")
-              this.androidPermissions.requestPermissions(list);
-
-            });
-        }
 
       })
 

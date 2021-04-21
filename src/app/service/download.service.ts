@@ -232,6 +232,12 @@ export class DownloadService {
         });
     });
 
+
+
+  this.file.checkDir(this.file.externalRootDirectory , 'WStatusSaver',).then(()=>{
+
+
+
     this.file
       .copyFile(
         dirctorypath,
@@ -245,6 +251,28 @@ export class DownloadService {
       .catch((err) => {
         console.log(err);
       });
+
+
+  }).catch(()=>{
+
+    this.file.createDir(this.file.externalRootDirectory,'WStatusSaver',false)
+
+  })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   }
 
   public win: any = window;
