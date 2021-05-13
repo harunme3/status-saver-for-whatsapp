@@ -8,7 +8,6 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { File } from '@ionic-native/file/ngx';
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { VideoEditor } from '@ionic-native/video-editor/ngx';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
@@ -44,7 +43,6 @@ export class HammerConfig extends HammerGestureConfig {
     DownloaddualService,
     File,
     NativeStorage,
-    AndroidPermissions,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {
       provide: HAMMER_GESTURE_CONFIG,

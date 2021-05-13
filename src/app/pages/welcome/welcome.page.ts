@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
 import{NativeStorage} from '@ionic-native/native-storage/ngx'
-import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+
 
 
 @Component({
@@ -16,7 +16,6 @@ export class WelcomePage implements OnInit {
 
   constructor( private nativeStorage: NativeStorage,
     private router:Router,
-    private androidPermissions:AndroidPermissions,
     private file:File
     ) {}
 

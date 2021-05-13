@@ -51,15 +51,15 @@
     </ion-slide>
     <ion-slide>
 
-      <div class="images">
-        <div (press)="tapEvent()" class="image" *ngFor="let video of Videosdual; index as i;trackBy:trackbydownviewv">
+      <ion-row class="images">
+        <ion-col size="6" (press)="tapEvent()" class="image" *ngFor="let video of Videosdual; index as i;trackBy:trackbydownviewv">
           <div class="con">
           <ion-checkbox class="media-selector" style="position:absolute" *ngIf="checkbox"
             (ionChange)="markForDownload($event,video,i)"></ion-checkbox>
           <img [src]=video.videoscr (click)="show(video.downview,i,video.videoscr)" />
           </div>
-        </div>
-      </div>
+        </ion-col>
+      </ion-row>
 
     </ion-slide>
   </ion-slides>

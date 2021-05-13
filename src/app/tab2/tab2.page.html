@@ -57,7 +57,7 @@
     <ion-slide>
 
       <ion-row class="images">
-        <ion-col (press)="tapEvent()" class="image" *ngFor="let video of Videos; index as i;trackBy:trackbydownviewv">
+        <ion-col size="6" (press)="tapEvent()" class="image" *ngFor="let video of Videos; index as i;trackBy:trackbydownviewv">
           <div class="con">
           <ion-checkbox class="media-selector" style="position:absolute" *ngIf="checkbox"
           (ionChange)="markForDownload($event,video,i)"></ion-checkbox>

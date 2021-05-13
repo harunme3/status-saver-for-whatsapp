@@ -253,7 +253,9 @@ export class DownloadService {
       });
 
 
-  }).catch(()=>{
+  }).catch((e)=>{
+
+  console.log('e :>> ', e);
 
     this.file.createDir(this.file.externalRootDirectory,'WStatusSaver',false)
 
