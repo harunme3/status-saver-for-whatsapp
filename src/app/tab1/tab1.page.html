@@ -3,9 +3,8 @@
   <ion-title>Status</ion-title>
   <ion-icon (click)=" callonresume_main() " class="ion-padding" slot="end" size="large" name="reload-outline">
   </ion-icon>
-  <ion-icon (click)="launchaApp()" class="ion-padding" slot="end" size="large" name="logo-whatsapp"></ion-icon>
-  <ion-icon (click)=" presentToast()" class="ion-padding" slot="end" size="large" name="information-circle-outline">
-  </ion-icon>
+  <ion-icon (click)="share()" class="ion-padding" slot="end" size="large"  name="share-social-sharp"></ion-icon>
+
   <ion-icon (click)="presentAlertRadio()" slot="end" size="large" name="ellipsis-vertical-outline"></ion-icon>
   </ion-toolbar>
   <ion-segment (ionChange)="segmentChanged()" [(ngModel)]="segment">
@@ -39,24 +38,29 @@
 
   <ion-slides #slides (ionSlideDidChange)="slideChanged(slides)" [options]="slideConfig">
     <ion-slide>
-      <div class="images">
-        <div (press)="tapEvent()" class="image" *ngFor="let image of Photos; index as i; trackBy: trackbydownview">
+      <ion-row class="images">
+        <ion-col size="6" (press)="tapEvent()" class="image" *ngFor="let image of Photos; index as i; trackBy: trackbydownview">
+         <div class="con">
           <ion-checkbox   class="media-selector" style="position: absolute" *ngIf="checkbox"
-            (ionChange)="markForDownload($event,image,i)"></ion-checkbox>
-          <img [src]="image.imagescr" (click)="show(image.downview, i, image.imagescr)" />
-        </div>
-      </div>
+          (ionChange)="markForDownload($event,image,i)"></ion-checkbox>
+        <img  [src]="image.imagescr" (click)="show(image.downview, i, image.imagescr)" />
+         </div>
+        </ion-col>
+      </ion-row>
     </ion-slide>
 
 
     <ion-slide>
-      <div class="images">
-        <div (press)="tapEvent()" class="image" *ngFor="let video of Videos; index as i;trackBy:trackbydownviewv">
-          <ion-checkbox class="media-selector" style="position:absolute" *ngIf="checkbox"
-            (ionChange)="markForDownload($event,video,i)"         ></ion-checkbox>
-          <img [src]=video.videoscr (click)="show(video.downview,i,video.videoscr)" />
-        </div>
-      </div>
+      <ion-row class="images">
+        <ion-col size="6" (press)="tapEvent()" class="image" *ngFor="let video of Videos; index as i;trackBy:trackbydownviewv">
+       <div class="con">
+        <ion-checkbox class="media-selector" style="position:absolute" *ngIf="checkbox"
+        (ionChange)="markForDownload($event,video,i)"         ></ion-checkbox>
+      <img [src]=video.videoscr (click)="show(video.downview,i,video.videoscr)" />
+       </div>
+
+        </ion-col>
+      </ion-row>
     </ion-slide>
 
   </ion-slides>

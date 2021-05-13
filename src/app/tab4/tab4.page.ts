@@ -42,7 +42,7 @@ appname:string="";
 
   ) {
 
-    console.log("hello")
+
 this.platform.ready().then(()=>{
   setTimeout(() => {
     this.showlottie();
@@ -76,6 +76,14 @@ ngAfterViewInit()
   this.Videosdual= this.downloaddualService.statusvideo;
 
 
+      }
+      else if(key=="GB WhatsApp")
+      {
+
+
+        this.downloaddualService.getMedia("file:///storage/emulated/0/","GBWhatsApp/Media", "GBWhatsApp/Media/.Statuses");
+      this.Photosdual = this.downloaddualService.statusphoto;
+      this.Videosdual=this.downloaddualService.statusvideo;
       }
       else
       {
@@ -135,6 +143,12 @@ callonresume_dual()
   this.Photosdual = this.downloaddualService.statusphoto;
   this.Videosdual=this.downloaddualService.statusvideo;
 
+      }
+      else if(key=="GB WhatsApp")
+      {
+        this.downloaddualService.getMedia("file:///storage/emulated/0/","GBWhatsApp/Media", "GBWhatsApp/Media/.Statuses");
+        this.Photosdual = this.downloaddualService.statusphoto;
+        this.Videosdual=this.downloaddualService.statusvideo;
       }
       else
       {
@@ -268,6 +282,14 @@ async presentAlertRadio() {
         type: 'radio',
         label: 'Business dual',
         value: 'Business dual',
+
+      }
+      ,
+      {
+        name: 'GB WhatsApp',
+        type: 'radio',
+        label: 'GB WhatsApp',
+        value: 'GB WhatsApp',
 
       }
 

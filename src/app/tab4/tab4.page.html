@@ -38,22 +38,26 @@
 
   <ion-slides #slides (ionSlideDidChange)="slideChanged(slides)" [options]="slideConfig">
     <ion-slide>
-      <div class="images">
-        <div (press)="tapEvent()" class="image" *ngFor="let image of Photosdual; index as i; trackBy: trackbydownview">
+      <ion-row class="images">
+        <ion-col size="6" (press)="tapEvent()" class="image" *ngFor="let image of Photosdual; index as i; trackBy: trackbydownview">
+          <div class="con">
           <ion-checkbox class="media-selector" style="position: absolute" *ngIf="checkbox"
             (ionChange)="markForDownload($event,image,i)"></ion-checkbox>
           <img [src]="image.imagescr" (click)="show(image.downview, i, image.imagescr)" />
-        </div>
-      </div>
+          </div>
+        </ion-col>
+      </ion-row>
 
     </ion-slide>
     <ion-slide>
 
       <div class="images">
         <div (press)="tapEvent()" class="image" *ngFor="let video of Videosdual; index as i;trackBy:trackbydownviewv">
+          <div class="con">
           <ion-checkbox class="media-selector" style="position:absolute" *ngIf="checkbox"
             (ionChange)="markForDownload($event,video,i)"></ion-checkbox>
           <img [src]=video.videoscr (click)="show(video.downview,i,video.videoscr)" />
+          </div>
         </div>
       </div>
 
@@ -65,7 +69,7 @@
   <div class="close-app" *ngIf="lottiecard">
     <ion-card color="success">
      <ion-card-header>
-       <ion-card-title>Look like you have not installed {{appname}}</ion-card-title>
+       <ion-card-title>Look like you have not installed {{appname}} <br>OR<br>you have not seen any status on {{appname}}</ion-card-title>
      </ion-card-header>
     <ion-button (click)="closeselection()" expand="block"  color="secondary"  color="secondary">
         close {{appname}}

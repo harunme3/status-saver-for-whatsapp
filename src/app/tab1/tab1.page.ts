@@ -6,7 +6,6 @@ import { File } from '@ionic-native/file/ngx';
 import {
   ModalController,
   Platform,
-  ToastController,
   AlertController,
   IonSlides,
 } from '@ionic/angular';
@@ -30,7 +29,6 @@ export class Tab1Page {
     public platform: Platform,
     private modalController: ModalController,
     private downloadService: DownloadService,
-    private toastController: ToastController,
     private alertController: AlertController,
     private nativeStorage: NativeStorage,
     private toolactionService:ToolactionService
@@ -87,25 +85,6 @@ ngAfterViewInit(): void {
   }
 
 
-//help or i button
-
-  async presentToast() {
-    const toast = await this.toastController.create({
-      message:
-        'If any status is not showing please watch full status on whatsapp',
-      duration: 5000,
-      mode: 'ios',
-      position: 'top',
-      color: 'success',
-      buttons: [
-        {
-          text: 'Okay',
-          role: 'cancel',
-        },
-      ],
-    });
-    toast.present();
-  }
 
 
 
@@ -149,6 +128,13 @@ ngAfterViewInit(): void {
           label: 'Business dual',
           value: 'Business dual',
         },
+      {
+        name: 'GB WhatsApp',
+        type: 'radio',
+        label: 'GB WhatsApp',
+        value: 'GB WhatsApp',
+
+      }
       ],
       buttons: [
         {
@@ -172,6 +158,7 @@ ngAfterViewInit(): void {
             } else {
               this.nativeStorage.setItem('dual', select).then( async() => {
                 console.log('saved value');
+
               await  this.presentAlert();
               });
             }
@@ -206,12 +193,11 @@ ngAfterViewInit(): void {
 
 
 
+//share
+share() {
+  this.downloadService.share_with_all_option();
+}
 
-  //launch App
-
-  launchaApp() {
-    this.downloadService.launchApp('com.whatsapp');
-  }
 
 
 

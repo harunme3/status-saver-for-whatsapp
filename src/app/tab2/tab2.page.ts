@@ -61,9 +61,13 @@ export class Tab2Page {
     return await popover.present();
   }
 
-  share() {
-    this.downloadService.share_with_all_option();
-  }
+
+    //launch App
+
+    launchaApp() {
+      this.downloadService.launchApp('com.whatsapp');
+    }
+
 
   //slider part
 
